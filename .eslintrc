@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
+  "plugins": [
+    "react",
+    "jsx-a11y"
+  ]
+}

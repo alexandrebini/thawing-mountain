@@ -1,7 +1,7 @@
 {
   "extends": [
     "standard",
-    "standard-jsx"
+    "standard-react"
   ],
   "plugins": [
     "react",

@@ -2,25 +2,32 @@ class JobProcessJob < ApplicationJob
   extend Memoist
   queue_as :default
 
-  attr_reader :hn_id
+  attr_reader :story_id, :hn_id
 
-  def perform(hn_id)
+  def perform(story_id, hn_id)
+    @story_id = story_id
     @hn_id = hn_id
+    return if story.blank?
     return unless response.success?
-    job.save
+    model.save
   end
 
   private
+
+  def story
+    Story.find_by(id: story_id)
+  end
 
   def response
     HackerNews.item(hn_id)
   end
 
-  def job
-    Job.where(hn_id: hn_id).first_or_initialize.tap do |job|
-      job.user = user
-      job.text = text
-      job.published_at = published_at
+  def model
+    Job.where(hn_id: hn_id).first_or_initialize.tap do |model|
+      model.story = story
+      model.user = user
+      model.text = text
+      model.published_at = published_at
     end
   end
 
@@ -36,5 +43,5 @@ class JobProcessJob < ApplicationJob
     Time.zone.at(response.parsed_response['time'])
   end
 
-  memoize :response, :job, :user, :text, :published_at
+  memoize :story, :response, :model, :user, :text, :published_at
 end

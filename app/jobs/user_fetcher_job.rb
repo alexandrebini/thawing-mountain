@@ -2,10 +2,10 @@ class UserFetcherJob < ApplicationJob
   extend Memoist
   queue_as :default
   USERNAME = 'whoishiring'.freeze
+  LIMIT = 10
 
   def perform
     return unless response.success?
-    return if stories_ids.blank?
     stories_ids.each { |story_id| StoryProcessJob.perform_later(story_id) }
   end
 
@@ -16,8 +16,8 @@ class UserFetcherJob < ApplicationJob
   end
 
   def stories_ids
-    return unless response.success?
-    response.parsed_response['submitted']
+    return [] unless response.success?
+    response.parsed_response['submitted'].first(LIMIT)
   end
 
   memoize :response, :stories_ids

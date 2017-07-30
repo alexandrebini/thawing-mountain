@@ -7,8 +7,8 @@ class StoryProcessJob < ApplicationJob
   def perform(hn_id)
     @hn_id = hn_id
     return unless response.success?
-    return unless story.save
-    comments_ids.each { |comment_id| JobProcessJob.perform_later(comment_id) }
+    return unless model.save
+    comments_ids.each { |comment_id| JobProcessJob.perform_later(model.id, comment_id) }
   end
 
   private
@@ -17,16 +17,16 @@ class StoryProcessJob < ApplicationJob
     HackerNews.item(hn_id)
   end
 
-  def story
-    Story.where(hn_id: hn_id).first_or_initialize.tap do |story|
-      story.title = title
-      story.published_at = published_at
+  def model
+    Story.where(hn_id: hn_id).first_or_initialize.tap do |model|
+      model.title = title
+      model.published_at = published_at
     end
   end
 
   def comments_ids
     return [] unless response.success?
-    response.parsed_response['kids']
+    response.parsed_response['kids'].to_a
   end
 
   def title
@@ -37,5 +37,5 @@ class StoryProcessJob < ApplicationJob
     Time.zone.at(response.parsed_response['time'])
   end
 
-  memoize :response, :story, :comments_ids, :title, :published_at
+  memoize :response, :model, :comments_ids, :title, :published_at
 end

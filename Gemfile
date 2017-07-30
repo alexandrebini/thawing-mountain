@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'friendly_id', '5.2.1'
+gem 'graphiql-rails', '1.4.2'
+gem 'graphql', '1.6.6'
 gem 'httparty', '0.15.6'
 gem 'memoist', '0.16.0'
 gem 'pg', '0.21.0'

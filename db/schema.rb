@@ -32,10 +32,12 @@ ActiveRecord::Schema.define(version: 20170728184107) do
     t.integer "hn_id", null: false
     t.string "title", null: false
     t.datetime "published_at", null: false
+    t.string "slug", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hn_id"], name: "index_stories_on_hn_id", unique: true
     t.index ["published_at"], name: "index_stories_on_published_at"
+    t.index ["slug"], name: "index_stories_on_slug", unique: true
   end
 
 end

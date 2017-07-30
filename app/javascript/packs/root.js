@@ -4,17 +4,13 @@ import { Route } from 'react-router'
 import { ConnectedRouter } from 'react-router-redux'
 import { ApolloProvider } from 'react-apollo'
 import configureStore, { history, apolloClient } from '../config/configureStore'
-
+import StoriesPage from '../pages/StoriesPage'
 const store = configureStore()
-
-const About = props => (<div>aaa</div>)
 
 const Root = props => (
   <ApolloProvider store={store} client={apolloClient}>
     <ConnectedRouter history={history}>
-      <div>
-        <Route exact path='/' component={About} />
-      </div>
+      <Route exact path='/' component={StoriesPage} />
     </ConnectedRouter>
   </ApolloProvider>
 )

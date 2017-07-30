@@ -2,7 +2,7 @@ class UserFetcherJob < ApplicationJob
   extend Memoist
   queue_as :default
   USERNAME = 'whoishiring'.freeze
-  LIMIT = 10
+  LIMIT = 5
 
   def perform
     return unless response.success?

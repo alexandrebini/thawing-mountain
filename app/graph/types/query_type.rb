@@ -14,6 +14,7 @@ QueryType = GraphQL::ObjectType.define do
 
   field :jobs, types[JobType] do
     argument :recent, types.Boolean
+    argument :story_slug, types.String
     resolve ->(_obj, args, _ctx) { Job.filter(args) }
   end
 

@@ -15,7 +15,6 @@ gem 'puma', '3.9.1'
 gem 'rails', '5.1.2'
 gem 'react-rails', '2.2.1'
 gem 'redis', '3.3.3'
-gem 'sass-rails', '5.0.6'
 gem 'sucker_punch', '2.0.2'
 gem 'turbolinks', '5.0.1'
 gem 'tzinfo-data', platforms: %i[mingw mswin jruby x64_mingw]
@@ -48,5 +47,4 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring', '~> 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
 end

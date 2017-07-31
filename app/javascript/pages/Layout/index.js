@@ -1,19 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from 'material-ui/styles'
 import SidebarContainer from '../../containers/SidebarContainer'
-import styles from './styles'
+import styles from './styles.css'
 
-const Layout = ({children, classes}) => (
-  <main className={classes.container}>
-    <SidebarContainer />
-    {children}
+const Layout = ({children}) => (
+  <main className={styles.container}>
+    <nav className={styles.sidebar}>
+      <SidebarContainer />
+    </nav>
+    <article className={styles.article}>
+      {children}
+    </article>
   </main>
 )
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired
+  children: PropTypes.node.isRequired
 }
 
-export default withStyles(styles)(Layout)
+export default Layout

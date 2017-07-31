@@ -12,4 +12,8 @@ class Story < ApplicationRecord
 
   scope :recent, -> { order(published_at: :desc) }
   scope :with_jobs, -> { joins(:jobs).group('stories.id') }
+
+  def self.latest
+    recent.first
+  end
 end

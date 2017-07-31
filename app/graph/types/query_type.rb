@@ -8,8 +8,12 @@ QueryType = GraphQL::ObjectType.define do
   end
 
   field :story, StoryType do
-    argument :slug, !types.String
-    resolve ->(_obj, args, _ctx) { Job.find_by(slug: args['slug']) }
+    argument :slug, types.String
+    argument :latest, types.Boolean
+    resolve lambda { |_obj, args, _ctx|
+      next Story.latest if args['latest'].present?
+      Story.find_by(slug: args['slug'])
+    }
   end
 
   field :jobs, types[JobType] do

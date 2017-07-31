@@ -4,8 +4,8 @@ import { CircularProgress } from 'material-ui/Progress'
 import JobListItem from '../JobListItem'
 import styles from './styles.css'
 
-const JobList = ({data}) => {
-  if (data.loading) {
+const JobList = ({loading, jobs}) => {
+  if (loading) {
     return (
       <div className={styles.loading}>
         <CircularProgress />
@@ -13,15 +13,13 @@ const JobList = ({data}) => {
     )
   }
 
-  const items = data.jobs.slice(0,100).map((job) => <JobListItem job={job} key={job.id} />)
+  const items = jobs.map((job) => <JobListItem job={job} key={job.id} />)
   return <div>{items}</div>
 }
 
 JobList.propTypes = {
-  data: PropTypes.shape({
-    loading: PropTypes.bool,
-    jobs: PropTypes.array
-  }).isRequired
+  loading: PropTypes.bool,
+  jobs: PropTypes.array
 }
 
 export default JobList

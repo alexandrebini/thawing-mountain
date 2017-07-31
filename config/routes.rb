@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
 
+  root to: 'home#index'
   get '*path', to: 'home#index', constraints: lambda { |request|
     !request.xhr? && request.format.html?
   }

@@ -12,7 +12,7 @@ class Job < ApplicationRecord
   }
   scope :recent, -> { order(published_at: :desc) }
 
-  algoliasearch per_environment: true, disable_indexing: Rails.env.test? do
+  algoliasearch per_environment: true, disable_indexing: !Rails.env.production? do
     attribute :user
     attribute :text
     attribute :published_at do

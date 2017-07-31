@@ -1,5 +1,6 @@
 class JobProcessJob < ApplicationJob
   extend Memoist
+  include ActionView::Helpers::SanitizeHelper
   queue_as :default
 
   attr_reader :story_id, :hn_id
@@ -36,7 +37,7 @@ class JobProcessJob < ApplicationJob
   end
 
   def text
-    response.parsed_response['text']
+    sanitize(response.parsed_response['text'])
   end
 
   def published_at

@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import JobList from '../../components/JobList'
 
 const JobListContainer = ({data}) => (
-  <JobList data={data} />
+  <JobList loading={data.loading} jobs={data.jobs} />
 )
 
 const Query = gql`

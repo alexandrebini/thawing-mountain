@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-@import 'normalize.css';
+@import 'normalize.css'
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -32,7 +32,6 @@ pre {
 
 .article {
   flex: 1 1 100%;
-  padding: 8px;
   flex-grow: 1;
   overflow-y: scroll;
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 import Layout from '../Layout'
-import JobListContainer from '../../containers/JobListContainer'
+import StoryContainer from '../../containers/StoryContainer'
 
 const StoryPage = ({match}) => (
   <Layout>
-    <JobListContainer storySlug={match.params.slug} />
+    <StoryContainer storySlug={match.params.slug} />
   </Layout>
 )
 

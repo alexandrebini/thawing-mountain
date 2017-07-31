@@ -40,6 +40,12 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    algoliasearch (1.14.0)
+      httpclient (~> 2.8.3)
+      json (>= 1.5.1)
+    algoliasearch-rails (1.20.0)
+      algoliasearch (~> 1.14.0)
+      json (>= 1.5.1)
     arel (8.0.0)
     ast (2.3.0)
     babel-source (5.8.35)
@@ -114,7 +120,9 @@ GEM
     hashdiff (0.3.4)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
+    httpclient (2.8.3)
     i18n (0.8.6)
+    json (2.1.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -276,6 +284,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  algoliasearch-rails (= 1.20.0)
   byebug
   capybara (~> 2.13)
   database_cleaner (~> 1.6)
@@ -310,6 +319,9 @@ DEPENDENCIES
   vcr (~> 3.0)
   webmock (= 3.0.1)
   webpacker (= 2.0)
+
+RUBY VERSION
+   ruby 2.4.1p111
 
 BUNDLED WITH
    1.15.3

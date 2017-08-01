@@ -1,5 +1,8 @@
 {
   "name": "thawing-mountain",
+  "engines": {
+    "node": "8.1.0"
+  },
   "private": true,
   "dependencies": {
     "autoprefixer": "^7.1.2",

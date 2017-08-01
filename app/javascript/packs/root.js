@@ -5,7 +5,7 @@ import {ConnectedRouter} from 'react-router-redux'
 import {ApolloProvider} from 'react-apollo'
 import {InstantSearch} from 'react-instantsearch/dom'
 import configureStore, {history, apolloClient} from '../config/configureStore'
-import {ALGOLIA_APP_ID, ALGOLIA_APP_KEY, ALGOLIA_INDEX_NAME} from '../constants/algolia'
+import {ALGOLIA_APP_ID, ALGOLIA_APP_KEY, ALGOLIA_INDEX_NAME} from '../constants/Algolia'
 import HomePage from '../pages/HomePage'
 import StoryPage from '../pages/StoryPage'
 const store = configureStore()
